@@ -1,0 +1,56 @@
+RIVERBEND REGIONAL MEDICAL CENTER
+Patient Financial Services
+1200 Harbor Avenue, Suite 300, Millbrook, OH 45000
+
+STATEMENT DATE: October 3, 2026
+ACCOUNT NUMBER: 00-4471-SAMPLE
+GUARANTOR: Jordan A. Sample
+PATIENT: Jordan A. Sample
+DATE(S) OF SERVICE: 08/14/2026
+
+*** SYNTHETIC SAMPLE LETTER - NOT A REAL BILL ***
+
+SUMMARY OF CHARGES
+Emergency Dept Level 4 (CPT 99284) ............ $2,310.00
+CT Abdomen/Pelvis w/ contrast (CPT 74177) ..... $3,845.00
+Laboratory - Comprehensive Metabolic Panel .... $  212.00
+IV Infusion, initial hour (CPT 96365) ......... $  498.00
+                                    TOTAL CHARGES  $6,865.00
+
+Insurance Payments (Northstar Health Plan) .... -$3,902.18
+Contractual Adjustment ........................ -$1,611.40
+Patient Payments Received .....................  $    0.00
+
+PATIENT RESPONSIBILITY (Deductible/Coinsurance)  $1,351.42
+
+AMOUNT DUE BY 11/02/2026:                        $1,351.42
+
+Your insurance carrier has processed this claim. The remaining balance has been
+determined to be the patient's responsibility pursuant to the terms of your
+benefit plan, including applicable deductible and coinsurance provisions.
+
+Failure to remit payment or establish an approved payment arrangement on or
+before the due date may result in the account being placed with a third-party
+collection agency. Accounts that remain unresolved after 120 days from the
+first statement date may be reported to consumer credit reporting agencies.
+
+FINANCIAL ASSISTANCE: Riverbend Regional Medical Center offers a Financial
+Assistance Program (FAP) for eligible patients whose household income is at or
+below 400% of the Federal Poverty Guidelines. Applications must be submitted
+within 240 days of the first post-discharge billing statement. Patients with a
+pending FAP application will not be referred to collections while the
+application is under review. To request an application or a plain-language
+summary, call Patient Financial Services at (555) 010-4400, Monday-Friday,
+8:00 a.m. to 5:00 p.m., or visit the Financial Counseling office on Level 1.
+
+ITEMIZED STATEMENT: You have the right to request an itemized statement of all
+charges. If you believe there is an error, please contact us within 30 days of
+the statement date so we can review your account.
+
+PAYMENT OPTIONS: Pay online at the patient portal, by phone at (555) 010-4400,
+or by mail using the remittance coupon below. Interest-free payment plans of up
+to 12 months are available upon request.
+
+-------------------------- detach and return --------------------------
+Account: 00-4471-SAMPLE   Amount Due: $1,351.42   Due Date: 11/02/2026
+Make checks payable to: Riverbend Regional Medical Center
