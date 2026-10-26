@@ -1,0 +1,120 @@
+{
+  "result": {
+    "actions": [],
+    "contacts": [
+      {
+        "phone": "(555) 010-4400",
+        "who": "Riverbend Regional Medical Center Patient Financial Services",
+        "why": "To pay, request a financial assistance application, or get a plain-language summary",
+        "phone_found": true
+      },
+      {
+        "phone": "",
+        "who": "Financial Counseling office on Level 1",
+        "why": "To visit for financial help or an application",
+        "phone_found": true
+      }
+    ],
+    "deadlines": [
+      {
+        "date": "11/02/2026",
+        "quote": "AMOUNT DUE BY 11/02/2026: $1,351.42",
+        "rule": "",
+        "what": "Pay the $1,351.42 amount by this date, or the account may go to a collection agency",
+        "quote_found": true,
+        "date_found": true,
+        "computed_date": null,
+        "days_left": 8
+      },
+      {
+        "date": "",
+        "quote": "contact us within 30 days of the statement date",
+        "rule": "30 days of the statement date",
+        "what": "Contact the center if you think there is an error in your charges",
+        "quote_found": true,
+        "date_found": false,
+        "computed_date": "November 2, 2026",
+        "days_left": 8
+      },
+      {
+        "date": "",
+        "quote": "Applications must be submitted within 240 days of the first post-discharge billing statement.",
+        "rule": "240 days of the first post-discharge billing statement",
+        "what": "Submit a financial assistance application by this time limit",
+        "quote_found": true,
+        "date_found": false,
+        "computed_date": null,
+        "days_left": null
+      }
+    ],
+    "letter_type": "Hospital bill with payment and financial help options",
+    "money": "$1,351.42 you may owe",
+    "questions_to_ask": [
+      "How do I apply for the financial assistance program if my income is at or below 400% of the Federal Poverty Guidelines?",
+      "What is the exact process to set up an approved payment arrangement for the remaining balance?",
+      "Can I get a copy of the itemized statement of all charges at any time?"
+    ],
+    "reply_draft": "Dear [Riverbend Regional Medical Center Patient Financial Services],\n\nI am Jordan A. Sample, patient with account 00-4471-SAMPLE. I need help with the $1,351.42 amount due by 11/02/2026. I would like to apply for the financial assistance program. Please send me the application steps and a plain-language summary. Thank you for your help.\n\nSincerely,\n[Jordan A. Sample]\n[Your contact information]",
+    "reply_subject": "Payment help and financial assistance application for account 00-4471-SAMPLE",
+    "rights": [
+      "Request an itemized statement of all charges",
+      "Request an interest-free payment plan of up to 12 months",
+      "Apply for the Financial Assistance Program if eligible"
+    ],
+    "sender": "Riverbend Regional Medical Center Patient Financial Services",
+    "summary": [
+      "This letter is a hospital bill for Jordan A. Sample showing total charges of $6,865.00, with $3,902.18 paid by insurance and $1,611.40 adjusted, leaving $1,351.42 you may owe.",
+      "You must pay $1,351.42 by 11/02/2026, or the account may go to a collection agency.",
+      "You can contact Patient Financial Services at (555) 010-4400 or visit the Level 1 Financial Counseling office for help.",
+      "You have the right to request an itemized statement and can apply for financial assistance if eligible."
+    ]
+  },
+  "checks": {
+    "letter_date": "2026-10-03",
+    "summary_grade": 9.3,
+    "letter_grade": 12.0,
+    "dates_in_letter": [
+      {
+        "text": "October 3, 2026",
+        "iso": "2026-10-03",
+        "context": "STATEMENT DATE: October 3, 2026"
+      },
+      {
+        "text": "08/14/2026",
+        "iso": "2026-08-14",
+        "context": "DATE(S) OF SERVICE: 08/14/2026"
+      },
+      {
+        "text": "11/02/2026",
+        "iso": "2026-11-02",
+        "context": "AMOUNT DUE BY 11/02/2026:                        $1,351.42"
+      },
+      {
+        "text": "11/02/2026",
+        "iso": "2026-11-02",
+        "context": "Account: 00-4471-SAMPLE   Amount Due: $1,351.42   Due Date: 11/02/2026"
+      }
+    ],
+    "dates_not_in_deadlines": [
+      {
+        "text": "08/14/2026",
+        "iso": "2026-08-14",
+        "context": "DATE(S) OF SERVICE: 08/14/2026"
+      }
+    ],
+    "ungrounded_quotes": 0,
+    "ungrounded_phones": 0
+  },
+  "stats": {
+    "wall_seconds": 135.4,
+    "prompt_tokens": 1414,
+    "output_tokens": 854,
+    "tokens_per_second": 6.8,
+    "load_seconds": 0.0
+  },
+  "thinking": null,
+  "raw": "{\"actions\": [\n   \t\t \t\t \t\t \t\t \t\t \t\t ], \"contacts\": [\n        {\n            \"phone\": \"(555) 010-4400\",\n            \"who\": \"Riverbend Regional Medical Center Patient Financial Services\",\n            \"why\": \"To pay, request a financial assistance application, or get a plain-language summary\"\n        },\n        {\n            \"phone\": \"\",\n            \"who\": \"Financial Counseling office on Level 1\",\n            \"why\": \"To visit for financial help or an application\"\n        }\n    ], \"deadlines\": [\n        {\n            \"date\": \"11/02/2026\",\n            \"quote\": \"AMOUNT DUE BY 11/02/2026: $1,351.42\",\n            \"rule\": \"\",\n            \"what\": \"Pay the $1,351.42 amount by this date, or the account may go to a collection agency\"\n        },\n        {\n            \"date\": \"30 days of the statement date\",\n            \"quote\": \"contact us within 30 days of the statement date\",\n            \"rule\": \"\",\n            \"what\": \"Contact the center if you think there is an error in your charges\"\n        },\n        {\n            \"date\": \"240 days of the first post-discharge billing statement\",\n            \"quote\": \"Applications must be submitted within 240 days of the first post-discharge billing statement.\",\n            \"rule\": \"\",\n            \"what\": \"Submit a financial assistance application by this time limit\"\n        }\n    ], \"letter_type\": \"Hospital bill with payment and financial help options\", \"money\": \"$1,351.42 you may owe\", \"questions_to_ask\": [\n        \"How do I apply for the financial assistance program if my income is at or below 400% of the Federal Poverty Guidelines?\",\n        \"What is the exact process to set up an approved payment arrangement for the remaining balance?\",\n        \"Can I get a copy of the itemized statement of all charges at any time?\"\n    ], \"reply_draft\": \"Dear [Riverbend Regional Medical Center Patient Financial Services],\\n\\nI am Jordan A. Sample, patient with account 00-4471-SAMPLE. I need help with the $1,351.42 amount due by 11/02/2026. I would like to apply for the financial assistance program. Please send me the application steps and a plain-language summary. Thank you for your help.\\n\\nSincerely,\\n[Jordan A. Sample]\\n[Your contact information]\", \"reply_subject\": \"Payment help and financial assistance application for account 00-4471-SAMPLE\",\"rights\": [\"Request an itemized statement of all charges\", \"Request an interest-free payment plan of up to 12 months\", \"Apply for the Financial Assistance Program if eligible\"], \"sender\": \"Riverbend Regional Medical Center Patient Financial Services\", \"summary\": [\"This letter is a hospital bill for Jordan A. Sample showing total charges of $6,865.00, with $3,902.18 paid by insurance and $1,611.40 adjusted, leaving $1,351.42 you may owe.\", \"You must pay $1,351.42 by 11/02/2026, or the account may go to a collection agency.\", \"You can contact Patient Financial Services at (555) 010-4400 or visit the Level 1 Financial Counseling office for help.\", \"You have the right to request an itemized statement and can apply for financial assistance if eligible.\"]}",
+  "language": "en",
+  "model": "SparkLLM/Spark-X2.6-4B",
+  "created": "2026-10-25T07:31:52+00:00"
+}

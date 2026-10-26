@@ -1,0 +1,209 @@
+{
+  "hardware": {
+    "machine": "arm64",
+    "cpu": "Apple M1",
+    "memory_gb": 16,
+    "os": "Darwin 27.0.1",
+    "python": "3.11.1"
+  },
+  "runtime": {
+    "model": "SparkLLM/Spark-X2.6-4B",
+    "ollama_url": "http://127.0.0.1:11434",
+    "think": false,
+    "options": {
+      "temperature": 0.2,
+      "top_p": 0.95,
+      "top_k": 0,
+      "seed": 7,
+      "num_ctx": 8192,
+      "num_predict": 2048
+    },
+    "ollama_version": "0.40.6",
+    "family": "spark2_5",
+    "parameter_size": "4.1B",
+    "quantization": "BF16",
+    "format": "gguf",
+    "ollama_digest": "44ca4d700630e9a402cb439007132da135b2ca5329985b7f8944d04b7d59f43a",
+    "size_bytes": 8229921143,
+    "available": true
+  },
+  "system_prompt": "You are PlainLetter, a careful helper that explains official letters (medical bills, insurance notices, benefits notices, tax or government letters) to people who find them confusing. Many readers are stressed, have limited reading skills, or speak English as a second language.\n\nRules:\n- Use only facts written in the letter. Never invent dates, amounts, phone numbers, names, or rights.\n- Write for a 6th-grade reader: sentences of 12 words or fewer, everyday words, talk to the reader as \"you\". Say \"the hospital\", \"your insurance\", \"the county\" instead of long official names. If you must use a term from the letter (like \"deductible\" or \"appeal\"), explain it in a few words.\n- Be brief. The summary is 3 to 5 short sentences about what matters, not a copy of the letter. Do not list every charge, address, or account number.\n- Copy dates, money amounts, and phone numbers exactly as they appear.\n- \"actions\": 2 to 5 steps, most urgent first. Do not number them.\n- \"deadlines\": only dates or time limits by which the reader must do something, or after which something happens to them. The date the letter was sent is not a deadline. For each one, copy a short exact quote from the letter that proves it. If it is written as a rule (for example \"within 180 days of this notice\"), put the rule in \"rule\" and leave \"date\" empty.\n- \"contacts\": one entry per phone number. Combine the reasons.\n- \"questions_to_ask\": 2 to 4 useful questions the letter does not answer.\n- \"reply_draft\": under 120 words, for the reader to send. Polite, uses facts from the letter, [brackets] for things the reader must fill in. Do not promise payment or admit anything for the reader.\n- \"letter_type\": a few plain words, like \"Hospital bill\" or \"Insurance said no\". \"sender\": short name only, no address. \"money\": the one main amount and what it is, like \"$250.00 you may owe\", or empty.\n\nStyle example. Letter text: \"Failure to remit payment by the due date may result in referral to a collection agency.\" Plain version: \"Pay by the due date. If you don't, they may send your bill to a debt collector.\"\n\n- You are not a lawyer or doctor. Do not give legal or medical advice.",
+  "user_template": "Explain this letter for me. Write every field in {language}, but copy names, numbers, and quotes exactly as they appear in the letter.\n{note_block}\n<letter>\n{letter}\n</letter>",
+  "json_schema": {
+    "type": "object",
+    "properties": {
+      "letter_type": {
+        "type": "string",
+        "description": "e.g. hospital bill, insurance denial, benefits renewal"
+      },
+      "sender": {
+        "type": "string"
+      },
+      "summary": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "description": "3 to 5 short, simple sentences: what this letter is and what it means for me"
+      },
+      "money": {
+        "type": "string",
+        "description": "amount I owe or could lose, or empty"
+      },
+      "actions": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "step": {
+              "type": "string"
+            },
+            "how": {
+              "type": "string"
+            },
+            "urgent": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "step",
+            "how",
+            "urgent"
+          ]
+        }
+      },
+      "deadlines": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "what": {
+              "type": "string"
+            },
+            "date": {
+              "type": "string"
+            },
+            "rule": {
+              "type": "string"
+            },
+            "quote": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "what",
+            "date",
+            "rule",
+            "quote"
+          ]
+        }
+      },
+      "contacts": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "who": {
+              "type": "string"
+            },
+            "phone": {
+              "type": "string"
+            },
+            "why": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "who",
+            "phone",
+            "why"
+          ]
+        }
+      },
+      "rights": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "description": "help or rights the letter mentions"
+      },
+      "reply_subject": {
+        "type": "string"
+      },
+      "reply_draft": {
+        "type": "string"
+      },
+      "questions_to_ask": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      }
+    },
+    "required": [
+      "letter_type",
+      "sender",
+      "summary",
+      "money",
+      "actions",
+      "deadlines",
+      "contacts",
+      "rights",
+      "reply_subject",
+      "reply_draft",
+      "questions_to_ask"
+    ]
+  },
+  "runs": [
+    {
+      "sample": "01-hospital-bill.txt",
+      "language": "en",
+      "wall_seconds": 135.4,
+      "prompt_tokens": 1414,
+      "output_tokens": 854,
+      "tokens_per_second": 6.8,
+      "load_seconds": 0.0,
+      "summary_grade": 9.3,
+      "letter_grade": 12.0,
+      "deadlines": 3,
+      "ungrounded_quotes": 0,
+      "contacts": 2,
+      "ungrounded_phones": 0,
+      "dates_not_in_deadlines": [
+        "08/14/2026"
+      ]
+    },
+    {
+      "sample": "02-insurance-denial.txt",
+      "language": "en",
+      "wall_seconds": 165.8,
+      "prompt_tokens": 1404,
+      "output_tokens": 1058,
+      "tokens_per_second": 6.7,
+      "load_seconds": 0.0,
+      "summary_grade": 11.7,
+      "letter_grade": 12.0,
+      "deadlines": 2,
+      "ungrounded_quotes": 0,
+      "contacts": 4,
+      "ungrounded_phones": 0,
+      "dates_not_in_deadlines": []
+    },
+    {
+      "sample": "03-benefits-renewal.txt",
+      "language": "en",
+      "wall_seconds": 229.3,
+      "prompt_tokens": 1332,
+      "output_tokens": 1483,
+      "tokens_per_second": 6.6,
+      "load_seconds": 0.1,
+      "summary_grade": 9.9,
+      "letter_grade": 12.8,
+      "deadlines": 5,
+      "ungrounded_quotes": 0,
+      "contacts": 3,
+      "ungrounded_phones": 0,
+      "dates_not_in_deadlines": []
+    }
+  ]
+}
