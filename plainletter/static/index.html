@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PlainLetter — understand your letter</title>
+<style>
+  :root {
+    --bg: #f7f5f0; --card: #ffffff; --ink: #1b1d21; --muted: #5a5f69; --line: #e2ded4;
+    --brand: #1f5f8b; --brand-ink: #ffffff; --warn: #9a4b00; --warn-bg: #fff3e0;
+    --ok: #1e6b3a; --ok-bg: #e8f5ec; --urgent: #b3261e; --urgent-bg: #fdecea;
+    --fs: 18px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#14161a; --card:#1d2026; --ink:#eef0f3; --muted:#a6acb8; --line:#2e323a;
+      --brand:#6fb3e4; --brand-ink:#0d1b26; --warn:#ffb867; --warn-bg:#3a2a14; --ok:#7fd69a; --ok-bg:#16301f;
+      --urgent:#ff8a80; --urgent-bg:#3a1a18; }
+  }
+  body.big { --fs: 22px; }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink); font: var(--fs)/1.55 -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+  header { padding: 18px 24px; border-bottom:1px solid var(--line); display:flex; gap:16px; align-items:center; flex-wrap:wrap; }
+  header h1 { margin:0; font-size:1.5em; letter-spacing:-0.01em; }
+  header h1 span { color: var(--brand); }
+  header p { margin:0; color:var(--muted); font-size:.9em; flex:1 1 300px; }
+  .tools { display:flex; gap:8px; }
+  main { max-width: 1240px; margin: 0 auto; padding: 20px 24px 60px; display:grid; grid-template-columns: minmax(0,5fr) minmax(0,7fr); gap: 24px; }
+  @media (max-width: 900px) { main { grid-template-columns: 1fr; } }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:18px 20px; }
+  label { font-weight:600; display:block; margin: 10px 0 6px; }
+  textarea { width:100%; min-height: 360px; font: .85em/1.45 ui-monospace, Menlo, monospace; padding:12px; border-radius:10px;
+    border:1px solid var(--line); background:var(--bg); color:var(--ink); resize: vertical; }
+  #note { min-height: 64px; font-family: inherit; font-size: .85em; }
+  select, button, input[type=file]::file-selector-button { font: inherit; font-size: .9em; }
+  button { cursor:pointer; border-radius:10px; border:1px solid var(--line); background:var(--card); color:var(--ink); padding:8px 14px; }
+  button.primary { background:var(--brand); color:var(--brand-ink); border-color:var(--brand); font-weight:700; padding:12px 20px; width:100%; font-size:1em; margin-top:14px; }
+  button:disabled { opacity:.55; cursor: progress; }
+  button:focus-visible, textarea:focus-visible, select:focus-visible { outline: 3px solid var(--brand); outline-offset: 2px; }
+  .row { display:flex; gap:8px; flex-wrap:wrap; align-items:center; }
+  .samples button { font-size:.8em; padding:6px 10px; }
+  .hint { color:var(--muted); font-size:.8em; margin: 6px 0 0; }
+  .privacy { display:flex; gap:10px; align-items:flex-start; background:var(--ok-bg); color:var(--ok); border-radius:10px; padding:10px 12px; font-size:.8em; margin-top:14px; }
+  .disclaimer { background:var(--warn-bg); color:var(--warn); border-radius:10px; padding:10px 12px; font-size:.8em; margin-top:10px; }
+  #out h2 { font-size:1.05em; margin: 0 0 10px; display:flex; align-items:center; gap:10px; }
+  #out h2 .n { display:inline-grid; place-items:center; width:1.7em; height:1.7em; border-radius:50%; background:var(--brand); color:var(--brand-ink); font-size:.85em; flex:none; }
+  #out section { margin-bottom: 16px; }
+  #out ul, #out ol { margin: 0; padding-left: 1.2em; }
+  #out li { margin: 4px 0; }
+  .topline { display:flex; gap:10px; flex-wrap:wrap; margin-bottom: 14px; }
+  .pill { border-radius:999px; padding:4px 12px; font-size:.8em; background:var(--bg); border:1px solid var(--line); }
+  .pill.money { background:var(--urgent-bg); color:var(--urgent); border-color:transparent; font-weight:700; }
+  .urgent { display:inline-block; font-size:.7em; font-weight:800; color:var(--urgent); background:var(--urgent-bg); border-radius:6px; padding:1px 7px; margin-right:6px; vertical-align: 2px; letter-spacing:.04em; }
+  .dl { display:grid; grid-template-columns: minmax(130px, 240px) 1fr; gap: 4px 14px; padding:10px 0; border-top:1px solid var(--line); }
+  .dl:first-of-type { border-top:0; }
+  .dl .when { font-weight:800; }
+  .dl .quote { grid-column: 1 / -1; color:var(--muted); font-size:.8em; border-left:3px solid var(--line); padding-left:10px; }
+  .badge { font-size:.7em; border-radius:6px; padding:1px 7px; margin-left:6px; white-space:nowrap; }
+  .badge.ok { background:var(--ok-bg); color:var(--ok); }
+  .badge.warn { background:var(--warn-bg); color:var(--warn); }
+  .contact { display:flex; justify-content:space-between; gap:12px; padding:8px 0; border-top:1px solid var(--line); flex-wrap:wrap; }
+  .contact:first-child { border-top:0; }
+  .contact .phone { font-weight:800; font-variant-numeric: tabular-nums; white-space:nowrap; }
+  .contact .why { color:var(--muted); font-size:.85em; flex-basis:100%; }
+  pre.reply { white-space:pre-wrap; background:var(--bg); border:1px solid var(--line); border-radius:10px; padding:14px; font: .85em/1.5 inherit; font-family: inherit; margin:8px 0; }
+  .meta { color:var(--muted); font-size:.75em; border-top:1px solid var(--line); padding-top:10px; }
+  .empty { color:var(--muted); text-align:center; padding: 60px 20px; }
+  .empty b { display:block; font-size:1.2em; color:var(--ink); margin-bottom:8px; }
+  .spinner { width:22px; height:22px; border:3px solid var(--line); border-top-color:var(--brand); border-radius:50%; animation: spin 0.9s linear infinite; display:inline-block; vertical-align:middle; margin-right:10px; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .error { background:var(--urgent-bg); color:var(--urgent); padding:12px; border-radius:10px; }
+  details summary { cursor:pointer; color:var(--muted); font-size:.85em; }
+  .card { min-width: 0; overflow-wrap: anywhere; }
+  .tools { flex-wrap: wrap; }
+  @media (max-width: 600px) {
+    header, main { padding-left: 12px; padding-right: 12px; }
+    .card { padding: 14px; }
+    .dl { grid-template-columns: 1fr; gap: 2px; }
+    .tools button { padding: 6px 10px; font-size: .8em; }
+  }
+  @media print { header .tools, .left, .no-print { display:none !important; } main { display:block; } .card { border:0; } }
+</style>
+</head>
+<body>
+<header>
+  <h1>Plain<span>Letter</span></h1>
+  <p>Paste a confusing letter — a medical bill, insurance notice, benefits or tax letter. Get what it means, what to do, by when, who to call, and a reply you can send.</p>
+  <div class="tools">
+    <button id="bigText" aria-pressed="false" title="Bigger text">A+ Bigger text</button>
+    <button id="readAloud" title="Read the explanation aloud">🔊 Read aloud</button>
+    <button id="print" title="Print the explanation">🖨 Print</button>
+  </div>
+</header>
+<main>
+  <div class="left">
+    <div class="card">
+      <div class="row samples" aria-label="Try a sample letter">
+        <span class="hint" style="margin:0">Try a sample (made-up, no real data):</span>
+        <span id="sampleBtns" class="row"></span>
+      </div>
+      <label for="letter">1. Paste the letter text</label>
+      <textarea id="letter" placeholder="Paste the full text of your letter here..."></textarea>
+      <div class="row" style="margin-top:8px">
+        <label for="photo" style="margin:0; font-weight:500; font-size:.85em">or read a photo of the letter:</label>
+        <input id="photo" type="file" accept="image/*" style="font-size:.8em">
+      </div>
+      <label for="note">2. Anything about your situation? <span style="font-weight:400;color:var(--muted)">(optional, used for the reply)</span></label>
+      <textarea id="note" placeholder="e.g. I can't pay it all at once. / My doctor says this is urgent."></textarea>
+      <div class="row" style="margin-top:10px">
+        <label for="lang" style="margin:0">Explain it in</label>
+        <select id="lang"><option value="en">English</option><option value="es">Español</option><option value="zh">简体中文</option></select>
+      </div>
+      <button class="primary" id="go">Explain my letter</button>
+      <div class="privacy" id="privacy">🔒 <span>Runs <b>entirely on this computer</b> with the open Spark-X2.6-4B model. Your letter is never uploaded. <span id="modelLine"></span></span></div>
+      <div class="disclaimer">This tool can make mistakes. It is <b>not legal, medical, or financial advice</b>. Always check dates and amounts against your letter, and ask the office that sent it, a benefits counselor, or a legal aid office before acting on anything important.</div>
+    </div>
+  </div>
+  <div class="card" id="out" aria-live="polite">
+    <div class="empty"><b>Your plain-language explanation will appear here.</b>Paste a letter or pick a sample, then press “Explain my letter”.</div>
+  </div>
+</main>
+<script>
+const $ = (s) => document.querySelector(s);
+const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const labels = {
+  sample: { "01-hospital-bill": "🏥 Hospital bill", "02-insurance-denial": "🩺 Insurance denial", "03-benefits-renewal": "🧾 Food benefits renewal" },
+};
+
+fetch("/api/samples").then(r => r.json()).then(items => {
+  for (const it of items) {
+    const b = document.createElement("button");
+    b.textContent = labels.sample[it.name] || it.name;
+    b.onclick = () => { $("#letter").value = it.text; $("#letter").scrollTop = 0; };
+    $("#sampleBtns").appendChild(b);
+  }
+});
+fetch("/api/info").then(r => r.json()).then(i => {
+  $("#modelLine").textContent = i.available
+    ? `Model: ${i.model} · ${i.parameter_size || ""} · ${i.quantization || ""} · Ollama ${i.ollama_version || ""}`
+    : "⚠️ Model not reachable: " + (i.error || "start Ollama");
+});
+
+$("#bigText").onclick = (e) => { const on = document.body.classList.toggle("big"); e.target.setAttribute("aria-pressed", on); };
+$("#print").onclick = () => window.print();
+$("#readAloud").onclick = () => {
+  if (speechSynthesis.speaking) { speechSynthesis.cancel(); return; }
+  const text = $("#out").innerText;
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = { en: "en-US", es: "es-ES", zh: "zh-CN" }[$("#lang").value];
+  u.rate = 0.95;
+  speechSynthesis.speak(u);
+};
+
+$("#photo").onchange = async (e) => {
+  const f = e.target.files[0]; if (!f) return;
+  $("#letter").value = "Reading the photo (on this computer)...";
+  const data = await new Promise((res) => { const r = new FileReader(); r.onload = () => res(r.result); r.readAsDataURL(f); });
+  const r = await fetch("/api/ocr", { method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify({ image: data, filename: f.name }) });
+  const j = await r.json();
+  $("#letter").value = j.text || ("Could not read the photo: " + (j.error || ""));
+};
+
+let timer;
+$("#go").onclick = async () => {
+  const letter = $("#letter").value;
+  const btn = $("#go"); btn.disabled = true;
+  const t0 = Date.now();
+  $("#out").innerHTML = `<div class="empty"><span class="spinner"></span><b style="display:inline">Reading your letter…</b><p id="elapsed">0 s · the model runs on this computer, so this can take a minute.</p></div>`;
+  $("#out").scrollIntoView({ behavior: "smooth", block: "start" });
+  timer = setInterval(() => { const el = $("#elapsed"); if (el) el.firstChild.textContent = Math.round((Date.now() - t0) / 1000) + " s"; }, 1000);
+  try {
+    const r = await fetch("/api/explain", { method: "POST", headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({ letter, language: $("#lang").value, note: $("#note").value }) });
+    const j = await r.json();
+    if (!r.ok) throw new Error(j.error || r.statusText);
+    render(j);
+    $("#out").scrollIntoView({ behavior: "smooth", block: "start" });
+  } catch (err) {
+    $("#out").innerHTML = `<div class="error">Sorry, something went wrong: ${esc(err.message)}</div>`;
+  } finally { clearInterval(timer); btn.disabled = false; }
+};
+
+const T = {
+  en: ["What this letter means", "What you need to do", "Deadlines", "Who to call", "Reply you can send", "Help and rights the letter mentions", "Questions you could ask when you call", "Copy reply", "Fill in the [brackets] before sending.", "Subject"],
+  es: ["Qué significa esta carta", "Qué tiene que hacer", "Fechas límite", "A quién llamar", "Respuesta que puede enviar", "Ayuda y derechos que menciona la carta", "Preguntas que puede hacer al llamar", "Copiar respuesta", "Complete lo que está entre [corchetes] antes de enviar.", "Asunto"],
+  zh: ["这封信是什么意思", "您需要做什么", "截止日期", "联系谁", "可以发送的回复", "信中提到的帮助和权利", "打电话时可以问的问题", "复制回复", "发送前请填写[方括号]中的内容。", "主题"],
+};
+
+function render(d) {
+  const r = d.result, c = d.checks, s = d.stats;
+  const t = T[d.language] || T.en;
+  const ok = (b, good, bad) => b ? `<span class="badge ok">✓ ${good}</span>` : `<span class="badge warn">⚠ ${bad}</span>`;
+  let h = `<div class="topline">`;
+  if (r.letter_type) h += `<span class="pill">${esc(r.letter_type)}</span>`;
+  if (r.sender) h += `<span class="pill">From: ${esc(r.sender)}</span>`;
+  if (r.money) h += `<span class="pill money">${esc(r.money)}</span>`;
+  h += `</div>`;
+
+  h += `<section><h2><span class="n">1</span>${t[0]}</h2><ul>${r.summary.map(x => `<li>${esc(x)}</li>`).join("")}</ul>`;
+  if (c.summary_grade != null) h += `<p class="hint">Reading level: about grade ${c.summary_grade} (the original letter: grade ${c.letter_grade}${c.first_draft_grade != null ? `; before the simplify pass: grade ${c.first_draft_grade}` : ""}).</p>`;
+  h += `</section>`;
+
+  h += `<section><h2><span class="n">2</span>${t[1]}</h2><ol>${r.actions.map(a =>
+    `<li>${a.urgent ? '<span class="urgent">URGENT</span>' : ""}<b>${esc(a.step)}</b><br><span style="color:var(--muted);font-size:.9em">${esc(a.how)}</span></li>`).join("")}</ol></section>`;
+
+  h += `<section><h2><span class="n">3</span>${t[2]}</h2>`;
+  if (!r.deadlines.length) h += `<p class="hint">No deadlines found. Check the letter yourself.</p>`;
+  for (const x of r.deadlines) {
+    let when = x.date ? esc(x.date) : esc(x.rule);
+    if (!x.date && x.computed_date) when = `about ${esc(x.computed_date)}<br><span class="hint" style="font-weight:400">${esc(x.rule)} — date counted by PlainLetter, please double-check</span>`;
+    if (x.date && !x.date_supported) when += `<br><span class="badge warn" style="margin:0">⚠ date not in the quote, check the letter</span>`;
+    if (x.not_computed_reason) when += `<br><span class="hint" style="font-weight:400">Not counted: ${esc(x.not_computed_reason)}</span>`;
+    if (x.days_left != null) when += x.days_left < 0 ? `<br><span class="badge warn" style="margin:0">may have passed</span>` : `<br><span class="hint" style="font-weight:400">${x.days_left} days from today</span>`;
+    h += `<div class="dl"><div class="when">${when}</div><div>${esc(x.what)}</div>
+      <div class="quote">“${esc(x.quote)}” ${ok(x.quote_found, "found in letter", "not found word-for-word — check")}</div></div>`;
+  }
+  if (c.dates_not_in_deadlines?.length) h += `<details><summary>Other dates in the letter (${c.dates_not_in_deadlines.length})</summary><ul>${c.dates_not_in_deadlines.map(x => `<li><b>${esc(x.text)}</b> — ${esc(x.context)}</li>`).join("")}</ul></details>`;
+  h += `</section>`;
+
+  h += `<section><h2><span class="n">4</span>${t[3]}</h2>${r.contacts.map(x =>
+    `<div class="contact"><span><b>${esc(x.who)}</b></span><span class="phone">${esc(x.phone)}${ok(x.phone_found, "in letter", "not in letter")}</span><span class="why">${esc(x.why)}</span></div>`).join("")}`;
+  if (r.rights?.length) h += `<p style="margin:12px 0 4px"><b>${t[5]}</b></p><ul>${r.rights.map(x => `<li>${esc(x)}</li>`).join("")}</ul>`;
+  if (r.questions_to_ask?.length) h += `<p style="margin:12px 0 4px"><b>${t[6]}</b></p><ul>${r.questions_to_ask.map(x => `<li>${esc(x)}</li>`).join("")}</ul>`;
+  h += `</section>`;
+
+  h += `<section><h2><span class="n">5</span>${t[4]}</h2><p class="hint" style="margin:0">${t[9]}: <b>${esc(r.reply_subject)}</b> · ${t[8]}</p>
+    <pre class="reply" id="reply">${esc(r.reply_draft)}</pre><button class="no-print" id="copyReply">📋 ${t[7]}</button></section>`;
+
+  h += `<div class="meta">Made on this computer by ${esc(d.model)} in ${s.wall_seconds} s · ${s.model_calls} model calls · ${s.output_tokens} tokens · ${s.tokens_per_second} tokens/s. Not legal, medical, or financial advice — check every date and number against your letter.</div>`;
+  $("#out").innerHTML = h;
+  $("#copyReply").onclick = () => navigator.clipboard.writeText(`Subject: ${r.reply_subject}\n\n${r.reply_draft}`);
+}
+</script>
+</body>
+</html>
