@@ -1,0 +1,134 @@
+{
+  "result": {
+    "actions": [
+      {
+        "how": "Call (555) 010-7788 to request an expedited appeal if your condition is urgent.",
+        "step": "Call (555) 010-7790 within 14 calendar days to ask for a peer-to-peer discussion with the medical director.",
+        "urgent": true
+      },
+      {
+        "how": "Mail a standard appeal to Northstar Health Plan - Appeals Unit, P.O. Box 5551, Cedar Falls, IA 50000, or fax to (555) 010-7799.",
+        "step": "Include your Member ID and Reference Number with the appeal.",
+        "urgent": false
+      },
+      {
+        "how": "Call Member Services at (555) 010-7700 (TTY 711), Monday through Friday, 7 a.m. to 7 p.m. for questions.",
+        "step": "Call (555) 010-7700 to get free language assistance services.",
+        "urgent": false
+      }
+    ],
+    "contacts": [
+      {
+        "phone": "(555) 010-7788",
+        "who": "Northstar Health Plan",
+        "why": "Request an expedited appeal for urgent conditions.",
+        "phone_found": true
+      },
+      {
+        "phone": "(555) 010-7790",
+        "who": "Northstar Health Plan",
+        "why": "Request a peer-to-peer discussion with the medical director.",
+        "phone_found": true
+      },
+      {
+        "phone": "(555) 010-7799",
+        "who": "Northstar Health Plan",
+        "why": "Submit a standard appeal by fax.",
+        "phone_found": true
+      },
+      {
+        "phone": "(555) 010-7700 (TTY 711)",
+        "who": "Northstar Health Plan Member Services",
+        "why": "Ask questions about the notice and get free language assistance.",
+        "phone_found": true
+      }
+    ],
+    "deadlines": [
+      {
+        "date": "",
+        "quote": "Your appeal must be received within 180 calendar days from the date of this notice.",
+        "rule": "within 180 calendar days from the date of this notice",
+        "what": "Submit your standard appeal.",
+        "quote_found": true,
+        "date_found": false,
+        "computed_date": "March 28, 2027",
+        "days_left": 154,
+        "date_supported": false,
+        "not_computed_reason": null
+      },
+      {
+        "date": "",
+        "quote": "by calling (555) 010-7790 within 14 calendar days of this notice.",
+        "rule": "within 14 calendar days of this notice",
+        "what": "Request a peer-to-peer discussion with the medical director.",
+        "quote_found": true,
+        "date_found": false,
+        "computed_date": "October 13, 2026",
+        "days_left": -12,
+        "date_supported": false,
+        "not_computed_reason": null
+      }
+    ],
+    "letter_type": "Insurance notice about denied medical coverage",
+    "money": "",
+    "questions_to_ask": [
+      "What documents or records should I include in my appeal to show the conservative therapy I received?",
+      "What is the exact process for requesting free copies of the documents used in this decision?",
+      "What happens if my internal appeal is denied, and how do I know if I get an external review?"
+    ],
+    "reply_draft": "Dear Northstar Health Plan Appeals Unit,\n\nI am Maria L. Example (Member ID: NHP-000-SAMPLE-22). My Reference Number is UM-2026-0929-SAMPLE. I am writing about the MRI, lumbar spine without contrast (CPT 72148) request that was denied.\n\nI would like to request an appeal of this decision. I have received [number of weeks of conservative therapy] of therapy before the MRI, and I have [red-flag symptoms or not]. Please review my claim.\n\nThank you for your help.\n\nSincerely,\n[Your name]\n[Your contact information]",
+    "reply_subject": "Appeal request - MRI lumbar spine without contrast, Reference Number UM-2026-0929-SAMPLE",
+    "rights": [
+      "You have the right to request an internal appeal of this decision.",
+      "You may request, free of charge, copies of all documents relevant to this decision, including the medical policy cited.",
+      "If your internal appeal is denied, you may have the right to an independent external review."
+    ],
+    "sender": "Northstar Health Plan Utilization Management Department",
+    "summary": [
+      "Northstar Health Plan denied your MRI of the lumbar spine without contrast.",
+      "They did not have your required therapy and red-flag records.",
+      "You can still get the service.",
+      "But the plan will not cover the cost without an approved authorization.",
+      "You must submit your standard appeal within 180 calendar days.",
+      "Or request an expedited appeal if your condition is urgent.",
+      "You can also ask for a peer-to-peer discussion with the medical director.",
+      "Do this within 14 calendar days of this notice."
+    ],
+    "summary_first_draft": [
+      "Northstar Health Plan denied your MRI lumbar spine without contrast request because the required conservative therapy and red-flag symptom records were not met.",
+      "You can still decide to get the service, but the plan will not cover the cost without an approved authorization.",
+      "You must submit your standard appeal within 180 calendar days of this notice, or request an expedited appeal if your condition is urgent.",
+      "You can also ask for a peer-to-peer discussion with the medical director within 14 calendar days of this notice."
+    ]
+  },
+  "checks": {
+    "first_draft_grade": 11.7,
+    "letter_date": "2026-09-29",
+    "summary_grade": 6.5,
+    "letter_grade": 12.0,
+    "dates_in_letter": [
+      {
+        "text": "September 29, 2026",
+        "iso": "2026-09-29",
+        "context": "Date of Notice: September 29, 2026"
+      }
+    ],
+    "dates_not_in_deadlines": [],
+    "ungrounded_quotes": 0,
+    "unsupported_dates": 0,
+    "ungrounded_phones": 0
+  },
+  "stats": {
+    "wall_seconds": 189.0,
+    "model_calls": 2,
+    "prompt_tokens": 1601,
+    "output_tokens": 1202,
+    "tokens_per_second": 6.6,
+    "load_seconds": 0.0
+  },
+  "thinking": null,
+  "raw": "{\"actions\": [\n    {\"how\": \"Call (555) 010-7788 to request an expedited appeal if your condition is urgent.\",\n     \"step\": \"Call (555) 010-7790 within 14 calendar days to ask for a peer-to-peer discussion with the medical director.\",\n     \"urgent\": true},\n    {\"how\": \"Mail a standard appeal to Northstar Health Plan - Appeals Unit, P.O. Box 5551, Cedar Falls, IA 50000, or fax to (555) 010-7799.\",\n     \"step\": \"Include your Member ID and Reference Number with the appeal.\",\n     \"urgent\": false},\n    {\"how\": \"Call Member Services at (555) 010-7700 (TTY 711), Monday through Friday, 7 a.m. to 7 p.m. for questions.\",\n     \"step\": \"Call (555) 010-7700 to get free language assistance services.\",\n     \"urgent\": false}\n],\n\"contacts\": [\n    {\"phone\": \"(555) 010-7788\", \"who\": \"Northstar Health Plan\", \"why\": \"Request an expedited appeal for urgent conditions.\"},\n    {\"phone\": \"(555) 010-7790\", \"who\": \"Northstar Health Plan\", \"why\": \"Request a peer-to-peer discussion with the medical director.\"},\n    {\"phone\": \"(555) 010-7799\", \"who\": \"Northstar Health Plan\", \"why\": \"Submit a standard appeal by fax.\"},\n    {\"phone\": \"(555) 010-7700 (TTY 711)\", \"who\": \"Northstar Health Plan Member Services\", \"why\": \"Ask questions about the notice and get free language assistance.\"}\n],\n\"deadlines\": [\n    {\"date\": \"within 180 calendar days from the date of this notice\", \"quote\": \"Your appeal must be received within 180 calendar days from the date of this notice.\", \"rule\": \"\", \"what\": \"Submit your standard appeal.\"},\n    {\"date\": \"within 14 calendar days of this notice\", \"quote\": \"by calling (555) 010-7790 within 14 calendar days of this notice.\", \"rule\": \"\", \"what\": \"Request a peer-to-peer discussion with the medical director.\"}\n],\n\"letter_type\": \"Insurance notice about denied medical coverage\",\n\"money\": \"\",\n\"questions_to_ask\": [\n    \"What documents or records should I include in my appeal to show the conservative therapy I received?\",\n    \"What is the exact process for requesting free copies of the documents used in this decision?\",\n    \"What happens if my internal appeal is denied, and how do I know if I get an external review?\"\n],\n\"reply_draft\": \"Dear Northstar Health Plan Appeals Unit,\\n\\nI am Maria L. Example (Member ID: NHP-000-SAMPLE-22). My Reference Number is UM-2026-0929-SAMPLE. I am writing about the MRI, lumbar spine without contrast (CPT 72148) request that was denied.\\n\\nI would like to request an appeal of this decision. I have received [number of weeks of conservative therapy] of therapy before the MRI, and I have [red-flag symptoms or not]. Please review my claim.\\n\\nThank you for your help.\\n\\nSincerely,\\n[Your name]\\n[Your contact information]\",\n\"reply_subject\": \"Appeal request - MRI lumbar spine without contrast, Reference Number UM-2026-0929-SAMPLE\",\"rights\": [\"You have the right to request an internal appeal of this decision.\", \"You may request, free of charge, copies of all documents relevant to this decision, including the medical policy cited.\", \"If your internal appeal is denied, you may have the right to an independent external review.\"],\n\"sender\": \"Northstar Health Plan Utilization Management Department\",\n\"summary\": [\"Northstar Health Plan denied your MRI lumbar spine without contrast request because the required conservative therapy and red-flag symptom records were not met.\", \"You can still decide to get the service, but the plan will not cover the cost without an approved authorization.\", \"You must submit your standard appeal within 180 calendar days of this notice, or request an expedited appeal if your condition is urgent.\", \"You can also ask for a peer-to-peer discussion with the medical director within 14 calendar days of this notice.\"]\n}",
+  "language": "en",
+  "model": "SparkLLM/Spark-X2.6-4B",
+  "created": "2026-10-25T07:45:22+00:00"
+}
