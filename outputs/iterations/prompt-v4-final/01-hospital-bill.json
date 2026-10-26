@@ -1,0 +1,135 @@
+{
+  "result": {
+    "actions": [
+      {
+        "how": "Pay $1,351.42 by 11/02/2026, or set up a payment plan.",
+        "step": "Pay online, by phone, or by mail using the remittance coupon.",
+        "urgent": true
+      }
+    ],
+    "contacts": [
+      {
+        "phone": "(555) 010-4400",
+        "who": "Riverbend Regional Medical Center Patient Financial Services",
+        "why": "To pay, request a financial assistance application, or get a plain-language summary.",
+        "phone_found": true
+      }
+    ],
+    "deadlines": [
+      {
+        "date": "11/02/2026",
+        "quote": "AMOUNT DUE BY 11/02/2026: $1,351.42",
+        "rule": "",
+        "what": "You must pay $1,351.42 by this date or set up an approved payment arrangement.",
+        "quote_found": true,
+        "date_found": true,
+        "computed_date": null,
+        "days_left": 8
+      },
+      {
+        "date": "",
+        "quote": "contact us within 30 days of the statement date",
+        "rule": "30 days from the statement date",
+        "what": "Contact the center if you think a charge is wrong.",
+        "quote_found": true,
+        "date_found": false,
+        "computed_date": "November 2, 2026",
+        "days_left": 8
+      },
+      {
+        "date": "",
+        "quote": "Applications must be submitted within 240 days of the first post-discharge billing statement.",
+        "rule": "240 days of the first post-discharge billing statement",
+        "what": "Submit a financial assistance application by this time limit.",
+        "quote_found": true,
+        "date_found": false,
+        "computed_date": null,
+        "days_left": null
+      }
+    ],
+    "letter_type": "Hospital bill with payment and financial assistance notice",
+    "money": "$1,351.42 you must pay by 11/02/2026",
+    "questions_to_ask": [
+      "Does my household income qualify me for the Financial Assistance Program?",
+      "Can you explain the deductible and coinsurance amounts in plain words?",
+      "What is the exact process for setting up a payment plan?"
+    ],
+    "reply_draft": "Dear [Patient Name],\n\nI am reviewing my bill from Riverbend Regional Medical Center. The total charges are $6,865.00, and the amount due is $1,351.42, due by 11/02/2026. I would like to pay this amount or ask about a payment plan. I also want to check if my household qualifies for the Financial Assistance Program. Please contact me at [phone number] so I can help with this.\n\nThank you,\n[Your Name]",
+    "reply_subject": "Payment and Financial Assistance Questions for Bill 00-4471-SAMPLE",
+    "rights": [
+      "Request an itemized statement of all charges.",
+      "Request a financial assistance application or plain-language summary.",
+      "Set up an approved payment arrangement.",
+      "Request an interest-free payment plan of up to 12 months."
+    ],
+    "sender": "Riverbend Regional Medical Center Patient Financial Services",
+    "summary": [
+      "The bill shows $6,865.00 in total charges.",
+      "Your insurance and other payments cover $5,513.58.",
+      "That leaves $1,351.42 due by 11/02/2026.",
+      "You can pay online, by phone, or by mail.",
+      "You can also ask for a payment plan.",
+      "If you think a charge is wrong, contact the center.",
+      "Do this within 30 days of the statement date.",
+      "The center offers a Financial Assistance Program.",
+      "This program is for eligible patients.",
+      "The application deadline is 240 days from the first post-discharge billing statement."
+    ],
+    "summary_first_draft": [
+      "The bill shows $6,865.00 in total charges. Your insurance and other payments cover $5,513.58, leaving $1,351.42 due by 11/02/2026.",
+      "You can pay online, by phone, or by mail, or ask for a payment plan.",
+      "If you think a charge is wrong, contact the center within 30 days of the statement date.",
+      "The center offers a Financial Assistance Program for eligible patients, with an application deadline of 240 days from the first post-discharge billing statement."
+    ]
+  },
+  "checks": {
+    "first_draft_grade": 7.4,
+    "letter_date": "2026-10-03",
+    "summary_grade": 4.8,
+    "letter_grade": 12.0,
+    "dates_in_letter": [
+      {
+        "text": "October 3, 2026",
+        "iso": "2026-10-03",
+        "context": "STATEMENT DATE: October 3, 2026"
+      },
+      {
+        "text": "08/14/2026",
+        "iso": "2026-08-14",
+        "context": "DATE(S) OF SERVICE: 08/14/2026"
+      },
+      {
+        "text": "11/02/2026",
+        "iso": "2026-11-02",
+        "context": "AMOUNT DUE BY 11/02/2026:                        $1,351.42"
+      },
+      {
+        "text": "11/02/2026",
+        "iso": "2026-11-02",
+        "context": "Account: 00-4471-SAMPLE   Amount Due: $1,351.42   Due Date: 11/02/2026"
+      }
+    ],
+    "dates_not_in_deadlines": [
+      {
+        "text": "08/14/2026",
+        "iso": "2026-08-14",
+        "context": "DATE(S) OF SERVICE: 08/14/2026"
+      }
+    ],
+    "ungrounded_quotes": 0,
+    "ungrounded_phones": 0
+  },
+  "stats": {
+    "wall_seconds": 179.1,
+    "model_calls": 2,
+    "prompt_tokens": 1634,
+    "output_tokens": 1134,
+    "tokens_per_second": 6.6,
+    "load_seconds": 0.0
+  },
+  "thinking": null,
+  "raw": "{\"actions\": [\n   \t\t \t\t \t\t \t\t \t\t \t\t{\n\t\t\t\t\t\t\"how\": \"Pay $1,351.42 by 11/02/2026, or set up a payment plan.\",\n\t\t\t\t\t\t\"step\": \"Pay online, by phone, or by mail using the remittance coupon.\",\n\t\t\t\t\t\t\"urgent\": true\n\t\t}\n\t\t],\n\t\t\"contacts\": [\n\t\t{\n\t\t\t\"phone\": \"(555) 010-4400\",\n\t\t\t\"who\": \"Riverbend Regional Medical Center Patient Financial Services\",\n\t\t\t\"why\": \"To pay, request a financial assistance application, or get a plain-language summary.\"\n\t\t}\n\t\t],\n\t\t\"deadlines\": [\n\t\t{\n\t\t\t\"date\": \"11/02/2026\",\n\t\t\t\"quote\": \"AMOUNT DUE BY 11/02/2026: $1,351.42\",\n\t\t\t\"rule\": \"\",\n\t\t\t\"what\": \"You must pay $1,351.42 by this date or set up an approved payment arrangement.\"\n\t\t},\n\t\t{\n\t\t\t\"date\": \"30 days from the statement date\",\n\t\t\t\"quote\": \"contact us within 30 days of the statement date\",\n\t\t\t\"rule\": \"\",\n\t\t\t\"what\": \"Contact the center if you think a charge is wrong.\"\n\t\t},\n\t\t{\n\t\t\t\"date\": \"240 days of the first post-discharge billing statement\",\n\t\t\t\"quote\": \"Applications must be submitted within 240 days of the first post-discharge billing statement.\",\n\t\t\t\"rule\": \"\",\n\t\t\t\"what\": \"Submit a financial assistance application by this time limit.\"\n\t\t}\n\t\t],\n\t\t\"letter_type\": \"Hospital bill with payment and financial assistance notice\",\n\t\t\"money\": \"$1,351.42 you must pay by 11/02/2026\",\n\t\t\"questions_to_ask\": [\n\t\t\"Does my household income qualify me for the Financial Assistance Program?\",\n\t\t\"Can you explain the deductible and coinsurance amounts in plain words?\",\n\t\t\"What is the exact process for setting up a payment plan?\"\n\t\t],\n\t\t\"reply_draft\": \"Dear [Patient Name],\\n\\nI am reviewing my bill from Riverbend Regional Medical Center. The total charges are $6,865.00, and the amount due is $1,351.42, due by 11/02/2026. I would like to pay this amount or ask about a payment plan. I also want to check if my household qualifies for the Financial Assistance Program. Please contact me at [phone number] so I can help with this.\\n\\nThank you,\\n[Your Name]\",\n\t\t\"reply_subject\": \"Payment and Financial Assistance Questions for Bill 00-4471-SAMPLE\",\n\t\t\"rights\": [\n\t\t\"Request an itemized statement of all charges.\",\n\t\t\"Request a financial assistance application or plain-language summary.\",\n\t\t\"Set up an approved payment arrangement.\",\n\t\t\"Request an interest-free payment plan of up to 12 months.\"\n\t\t],\n\t\t\"sender\": \"Riverbend Regional Medical Center Patient Financial Services\",\n\t\t\"summary\": [\n\t\t\t\"The bill shows $6,865.00 in total charges. Your insurance and other payments cover $5,513.58, leaving $1,351.42 due by 11/02/2026.\",\n\t\t\t\"You can pay online, by phone, or by mail, or ask for a payment plan.\",\n\t\t\t\"If you think a charge is wrong, contact the center within 30 days of the statement date.\",\n\t\t\t\"The center offers a Financial Assistance Program for eligible patients, with an application deadline of 240 days from the first post-discharge billing statement.\"\n\t\t]\n\t}",
+  "language": "en",
+  "model": "SparkLLM/Spark-X2.6-4B",
+  "created": "2026-10-25T07:42:13+00:00"
+}
